@@ -1,0 +1,2 @@
+SELECT * from (select project.id, (EXTRACT('years' from FINISH_DATE) - EXTRACT('years' from START_DATE))*12 + (EXTRACT('month' from FINISH_DATE) - EXTRACT('month' from START_DATE)) as MAX_COUNT from project)
+where MAX_COUNT = (select MAX((EXTRACT('years' from FINISH_DATE) - EXTRACT('years' from START_DATE))*12 + (EXTRACT('month' from FINISH_DATE) - EXTRACT('month' from START_DATE))) from project);
